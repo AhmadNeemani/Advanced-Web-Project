@@ -23,7 +23,7 @@ route::get('/test', function () {
     return view('testbegin');
 });
 
-Route::get('/products', function () {
+Route::get('/productsList', function () {
     return view('products');
 });
 
