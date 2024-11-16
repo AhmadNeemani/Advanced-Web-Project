@@ -6,12 +6,11 @@
     scroll-behavior: smooth;
 }
 
-.container {
-    width: 900px;
-    margin: auto;
-    text-align: center;
-    transition: transform .5s;
+.container_products_h {
     width: 100%;
+    text-align: center;
+    position: relative;
+    padding-top: 100px;
 }
 
 svg {
@@ -58,17 +57,6 @@ svg {
     height: auto;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background-color: #FAF1E8;
-    position: relative;
-    background: linear-gradient(to bottom, #FAF1E8, #FEE0D5);
-    z-index: 20;
-}
-
 .icon-cart {
     position: relative;
     z-index: 20;
@@ -110,6 +98,15 @@ header {
     filter: drop-shadow(0 50px 20px rgba(75, 73, 74, 0.454));
 }
 
+.products_title
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    padding: 10px 20px 20px;
+}
+
 .listProduct {
     display: flex;
     justify-content: center;
@@ -122,6 +119,19 @@ header {
     position: relative;
     overflow-x: visible;
     z-index: 20;
+    min-height: 110vh;
+}
+
+.tropical {
+    width: 50%;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform:translateY(-50%);
+    min-width: 290px;
+    max-width: 500px;
+    z-index: 0;
+    
 }
 
 .listProduct .item {
@@ -394,27 +404,6 @@ body.showCart .container {
 }
 
 
-/* Fotter */
-
-footer {
-    padding: 20px 0 30px;
-    background: #FAF1E8;
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 100;
-}
-
-footer .logo {
-    width: 20%;
-    height: auto;
-    max-width: 50px;
-}
-
 .social p span {
     color: #d23c57;
     cursor: pointer;
@@ -497,13 +486,6 @@ footer .logo {
     max-width: 350px;
 }
 
-.back3 {
-    position: absolute;
-    bottom: 10%;
-    right: 0px;
-    min-width: 300px;
-    max-width: 400px;
-}
 
 .back4 {
     width: 35%;
@@ -568,16 +550,6 @@ footer .logo {
     }
 }
 
-.tropical {
-    width: 50%;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    transform: scaleY(-1);
-    min-width: 290px;
-    max-width: 500px;
-    z-index: 0;
-}
 
 #side-nav {
     width: 280px;

@@ -20,8 +20,7 @@
     width: 100%;
     top: 0;
     z-index: 1000;
-position: fixed;
-margin-left: -40px;
+    position: fixed;
 }
 
 /* Header Navigation Styling */
@@ -96,6 +95,8 @@ footer {
     align-items: center;
     flex-direction: column;
     gap: 10px;
+    overflow: visible;
+    width: 100%;
 }
 
 footer .footerlogo {

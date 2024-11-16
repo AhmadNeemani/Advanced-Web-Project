@@ -471,25 +471,6 @@ hr {
     }
 }
 
-footer {
-    padding: 20px 0 30px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
-    position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-}
-
-footer .footerlogo {
-    width: 20%;
-    height: auto;
-    max-width: 50px;
-}
 
 .social p span {
     color: #d23c57;
