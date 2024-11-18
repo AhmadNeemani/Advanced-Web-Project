@@ -33,3 +33,4 @@ openbtn.addEventListener("click", () => {
 skipbtn.addEventListener("click", () => {
     popup.classList.remove("open");
 });
+

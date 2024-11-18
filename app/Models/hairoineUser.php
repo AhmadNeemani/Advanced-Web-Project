@@ -9,7 +9,10 @@ class hairoineUser extends Authenticatable
 {
     use HasFactory;
 
+    // Define fillable properties for mass assignment
     protected $fillable = ['name', 'email', 'phone_number', 'address', 'password'];
+
+    // Define relationships
 
     // Relationship with Product through Favorites (Many-to-Many)
     public function favorites()
@@ -21,8 +24,8 @@ class hairoineUser extends Authenticatable
     public function cart()
     {
         return $this->belongsToMany(Product::class, 'carts')
-                    ->withPivot('quantity')
-                    ->withTimestamps();
+            ->withPivot('quantity')
+            ->withTimestamps();
     }
 
     // Relationship with Order (One-to-Many)
@@ -30,5 +33,4 @@ class hairoineUser extends Authenticatable
     {
         return $this->hasMany(Order::class, 'customer_id');
     }
-}
-
+};
