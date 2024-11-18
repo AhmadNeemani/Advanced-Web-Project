@@ -38,8 +38,11 @@ Route::get('/test', function () {
     return view('testbegin');
 });
 
+
 // Products page
 Route::get('/products', function () {
+
+
     return view('products');
 });
 
