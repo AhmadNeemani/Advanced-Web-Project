@@ -1,0 +1,114 @@
+/* Google fonts  */
+
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@400;500;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    text-transform: capitalize;
+    font-family: 'Poppins', sans-serif;
+}
+
+#background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    gap: 20px;
+    overflow: visible;
+    background-color: antiquewhite;
+    z-index: 0;
+    background-image: url(https://wallpaperaccess.com/full/3851122.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#background img {
+    width: 100px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 500px;
+    background-color: aliceblue;
+    text-align: center;
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.container p {
+    font-size: 1rem;
+}
+
+.container h1 {
+    font-size: 1.9rem;
+}
+
+.container div p {
+    font-size: 1rem;
+    width: 60%;
+    text-align: center;
+}
+
+#Qbtn {
+    background-color: rgb(250, 227, 231);
+    border-color: #000;
+    border-style: solid;
+    width: 170px;
+    border-radius: 30px;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+#background .back12 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: -1;
+    right: 0;
+}
+
+#Qbtn:active {
+    transform: scale(0.96);
+}
+
+#Qbtn a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #000;
+    font-size: 1rem;
+    padding: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#goback img {
+    width: 20px;
+    height: 20px;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+#right {
+    width: 70%;
+}
