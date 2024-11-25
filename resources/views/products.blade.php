@@ -19,7 +19,20 @@
 
     </div>
 
+<div>
+    @foreach ($products as $product)
+        <div>
+           <h2>
+            {{$product->name}}
+           </h2>
+        </div>
 
+
+    @endforeach
+    
+
+
+</div>
 <div class="cartTab">
     <h1>Shopping Cart</h1>
     <div class="listCart"></div>

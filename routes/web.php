@@ -40,7 +40,7 @@ Route::get('/test', function () {
 
 
 // Products page
-Route::get('/products', function () {
+Route::get('/productsList', function () {
 
 
     return view('products');
