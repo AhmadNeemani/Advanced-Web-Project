@@ -9,15 +9,14 @@ use App\Models\hairoineUser;
 
 class LoginController extends Controller
 {
-    // Display the login page
     public function showLoginForm()
     {
-        return view('login'); // This should match your Blade view file name
+        return view('login'); 
     }
 
     public function login(Request $request)
     {
-        // Validate the input fields
+        
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
@@ -34,11 +33,7 @@ class LoginController extends Controller
             // Log the user in
             Auth::login($user);
 
-            // Handle specific redirections based on the user's name
-            if ($user->name === 'John Doe') {
-                // Redirect John Doe to the home page
-                return redirect('/');
-            }
+            
 
             if ($user->name === 'admin') {
                 // Redirect admin to a specific admin page

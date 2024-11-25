@@ -8,28 +8,46 @@
         <div class="title">
             <h5>Product List</h5>
         </div>
-        </div>
-    
-    
+    </div>
+
     <div class="listProduct">
-        <img src="{{ asset('pics/back1.png') }}" alt="" class="back1">
-        <img src="{{ asset('pics/back2.png') }}" alt="" class="back2">
-        <img src="https://static.vecteezy.com/system/resources/previews/010/832/908/original/tropical-green-palm-leaf-tree-isolated-on-white-background-free-png.png" alt="" class="tropical">
+        @foreach($products as $product)
+            <a href="{{ route('products.show', $product->id) }}" class="product-link">
+                <div class="mycard" style="background-image: url('{{ asset($product->image ?? 'pics/default.jpg') }}');">
+                    <div class="heart-wrapper">
+                        <div class="heart" data-id="{{ $product->id }}">
+                            <img src="{{ $product->isFavorite ? asset('pics/heart_filled.png') : asset('pics/heart.png') }}"
+                                alt="Favorite">
+                        </div>
+                    </div>
+
+                    <div class="mycardinfo">
+                        <h2>{{ $product->name }}</h2>
+                        <div class="cardprice">
+                            <div>
+                                <p><span>${{ number_format($product->price, 2) }}</span> USD</p>
+                            </div>
+                        </div>
+                        <div class="add-cart-wrapper">
+                            @if($product->quantity > 0)
+                                <button class="addCart" data-id="{{ $product->id }}">Add To Cart</button>
+                           
+                            @else
+                                <button class="addCart" disabled>Out of Stock</button>
+                            @endif
+                        </div>
+                        <span class="hidden-id" style="display:none;">{{ $product->id }}</span>
+                    </div>
+                </div>
+            </a>
+        @endforeach
     </div>
 
-    </div>
 
 
-<div class="cartTab">
-    <h1>Shopping Cart</h1>
-    <div class="listCart"></div>
-    <div class="btn">
-        <button class="close">Close</button>
-        <button class="checkOut">Check Out</button>
-    </div>
 </div>
 @endsection
 
 @push('scripts')
-<script src="{{ asset('resources/js/products.js') }}"></script>
+    @vite('resources/js/products.js')
 @endpush

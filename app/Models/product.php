@@ -9,31 +9,44 @@ class product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'category_id', 'quantity'];
+    protected $table = 'products';
 
-    // Relationship with Category (Many-to-One)
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'category_id',
+        'quantity',
+        'image',
+    ];
+
+    
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    // Relationship with HairoineUser through Favorites (Many-to-Many)
-    public function favoritedBy()
+   
+    public function favoritedByUsers()
     {
-        return $this->belongsToMany(HairoineUser::class, 'favorites')->withTimestamps();
+        return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
     }
 
-    // Relationship with HairoineUser through Cart (Many-to-Many with quantity)
-    public function inCartOf()
+   
+    public function cartUsers()
     {
-        return $this->belongsToMany(HairoineUser::class, 'carts')
+        return $this->belongsToMany(User::class, 'carts')
                     ->withPivot('quantity')
                     ->withTimestamps();
     }
 
-    // Relationship with Order (One-to-Many)
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->belongsToMany(Order::class, 'order_items')
+            ->withPivot('quantity', 'price')
+            ->withTimestamps();
     }
+
+    
+    
 }

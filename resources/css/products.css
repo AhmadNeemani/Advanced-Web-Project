@@ -110,7 +110,7 @@ svg {
 .listProduct {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 30px;
     flex-wrap: wrap;
     padding: 40px 20px;
@@ -118,7 +118,7 @@ svg {
     background-color: #FEE0D5;
     position: relative;
     overflow-x: visible;
-    z-index: 20;
+    z-index: 0;
     min-height: 110vh;
 }
 
@@ -364,6 +364,11 @@ body.showCart .container {
     left: 29%;
     top: -14px;
     font-size: .8rem;
+}
+
+.cardprice div p 
+{
+    margin-bottom: 0;
 }
 
 .mycardinfo button {
