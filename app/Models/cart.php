@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class cart extends Pivot
+class cart extends Model
 {
-    protected $table = 'carts';
-    protected $fillable = ['quantity'];
+    use HasFactory;
+
+    protected $fillable = ['customer_id', 'product_id', 'quantity'];
 }

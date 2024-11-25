@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class favorite extends Pivot
+class favorite extends Model
 {
-    protected $table = 'favorites';
+    use HasFactory;
+
+    protected $fillable = ['customer_id', 'product_id'];
 }

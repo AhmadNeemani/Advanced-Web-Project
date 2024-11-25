@@ -118,3 +118,32 @@ p a {
 p a:hover {
     text-decoration: none;
 }
+
+.error-box {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.error-box ul 
+{
+    padding: 0;
+}
+
+.error-box li 
+{
+    list-style: none;
+}
+.error {
+    color: #e3342f;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+
+
+
+

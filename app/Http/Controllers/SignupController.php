@@ -31,7 +31,7 @@ class SignupController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Redirect to the login page with a success message
+        
         return redirect()->route('login')->with('success', 'Account created successfully! Please log in.');
     }
 }

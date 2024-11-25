@@ -9,23 +9,16 @@ class order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['customer_id', 'product_id', 'total', 'time'];
+    protected $fillable = ['customer_id', 'total', 'address'];
 
-    // Relationship with HairoineUser (Many-to-One)
     public function customer()
     {
         return $this->belongsTo(HairoineUser::class, 'customer_id');
     }
 
-    // Relationship with Product (Many-to-One)
-    public function product()
+    public function items()
     {
-        return $this->belongsTo(Product::class, 'product_id');
-    }
-
-    // Relationship with Payment (One-to-Many)
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
+        return $this->hasMany(OrderItem::class);
     }
 }
+

@@ -342,3 +342,22 @@ footer .footerlogo {
 
 
 
+
+
+
+
+.dropdown-menu {
+    background-color: black !important;
+    border: none !important;
+}
+
+.dropdown-menu .dropdown-item {
+    color: white !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #444 !important;
+    color: white !important;
+}
+
+

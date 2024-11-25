@@ -3,63 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB; // To handle database operations
+use App\Models\Product;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        $products= Product::all();
-        return view('product', compact('products'));
+        $user = Auth::user(); // Get the currently authenticated user (if any)
+
+        // Fetch all products and determine if they are favorited by the user
+        $products = Product::all()->map(function ($product) use ($user) {
+            $product->isFavorite = $user ? $user->favorites->contains($product->id) : false;
+            return $product;
+        });
+
+        return view('products', compact('products')); // Pass products to the view
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+  
+    public function show($id)
+{
+    $user = Auth::user();
+
+    $product = Product::with('category')->findOrFail($id);
+
+    $product->isFavorite = $user ? $user->favorites->contains($product->id) : false;
+
+    $cartQuantity = 0;
+    if ($user) {
+        $cartItem = DB::table('carts')
+            ->where('customer_id', $user->id)
+            ->where('product_id', $id)
+            ->first();
+        $cartQuantity = $cartItem ? $cartItem->quantity : 0;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    // Debugging cartQuantity
+    \Log::info('Cart Quantity:', ['productId' => $id, 'userId' => $user->id ?? null, 'cartQuantity' => $cartQuantity]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    return view('show', compact('product', 'cartQuantity'));
+}
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
