@@ -1,0 +1,376 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins";
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif
+}
+
+#Icon {
+    width: 50px;
+    height: auto;
+}
+
+body {
+    background-color: #aba2a284;
+    color: rgb(0, 0, 0);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-weight: 100;
+}
+
+nav {
+    max-height: 50px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 0.2px inset rgba(0, 0, 0, 0.219);
+    font-size: large;
+    font-weight: bold;
+    gap: 10px;
+}
+
+#name {
+    font-size: 53px;
+    animation: nameframe 1s;
+    margin-left: 30px;
+}
+
+nav p {
+    margin-top: 3px;
+    margin-left: -3px;
+    padding-left: 5px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.quiz-container {
+    margin: 30px auto 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+.title {
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    text-align: center;
+    font-weight: bold;
+}
+
+.final-score {
+    font-size: 2rem;
+    margin: 0 0 20px;
+}
+
+#quiz-span {
+    color: #000000ed;
+}
+
+.question {
+    margin: 30px 0;
+    font-size: 1.5rem;
+}
+
+.option {
+    padding: 15px;
+    color: #000000ed;
+    background-color: #ffffff;
+    border-radius: 15px;
+    transition: all 0.3s;
+    margin-bottom: 10px;
+    text-align: center;
+    border: #00000029 solid 4px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.option input:checked .option {
+    background: #e57b7bed;
+    color: #000;
+}
+
+.controls>* {
+    margin: 15px;
+}
+
+button {
+    padding: 8px 25px;
+    border: none;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    font-weight: 300;
+    color: white;
+    outline: none;
+    transform: scale(0.98);
+    transition: all 0.2s;
+    width: 150px;
+    height: 40px;
+}
+
+button.previous {
+    background-color: #e57b7bed;
+    cursor: pointer;
+}
+
+button.previous:hover {
+    background-color: WHITE;
+    color: #c84630;
+}
+
+button.next {
+    background-color: #e57b7bed;
+    cursor: pointer;
+}
+
+button.next:hover {
+    color: #223404;
+    background-color: white;
+}
+
+button.restart {
+    text-transform: uppercase;
+    outline: 0;
+    background: #e57b7bed;
+    width: 100%;
+    border: 0;
+    padding: 10px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    width: 150px;
+    height: 30px;
+}
+
+button.restart:hover {
+    color: #e57b7bed;
+    background-color: white;
+}
+
+button:hover,
+button:focus {
+    transform: scale(1);
+    font-weight: 500;
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 40px;
+}
+
+.summary {
+    font-size: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 2px white solid;
+    width: 80%;
+}
+
+.summary p {
+    margin: 20px 0;
+    font-size: 1rem;
+}
+
+.summary h1 {
+    align-self: center;
+    color: #e57b7bed;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 30px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+    height: 50px;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+::-webkit-scrollbar-button {
+    background: transparent;
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(91, 91, 91, 0.208);
+}
+
+;
+
+/* footer page  */
+
+footer {
+    padding: 100px 0 20px;
+    background: #efefef;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-row {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-right {
+    flex-basis: 45%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.footer-row h1 {
+    margin: 10px 10px;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.footer-row p {
+    line-height: 35px;
+}
+
+.footer-left .fa,
+.footer-right .fa {
+    font-size: 20px;
+    color: #d23c57;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.footer-img {
+    max-width: 370px;
+    opacity: 0.3;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+}
+
+.social {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.social .fa {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    border: 1px solid #d23c57;
+    color: #d23c57;
+    cursor: pointer;
+    transition: 0.5s;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+
+.social .fa:hover {
+    background: #ffc1cc;
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.social p {
+    font-size: 13px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.social p span {
+    color: #d23c57;
+    cursor: pointer;
+}
+
+
+/* media queries */
+
+@media screen and (max-width:770px) {
+    .banner-text h1 {
+        font-size: 44px;
+    }
+    .banner-btn a {
+        display: block;
+        margin: 20px auto;
+    }
+    .title-text h1 {
+        font-size: 35px;
+    }
+    .features {
+        flex-basis: 100%;
+    }
+    .features-img {
+        flex-basis: 100%;
+    }
+    .features-img img {
+        width: 100%;
+    }
+    .single-service {
+        flex-basis: 100%;
+        margin-bottom: 30px;
+    }
+    .service-desc p {
+        font-size: 12px;
+    }
+    hr {
+        margin: 5px auto;
+    }
+    .single-service:hover .service-desc {
+        bottom: 25% !important;
+    }
+    .testimonial-column {
+        flex-basis: 100%;
+    }
+    .footer-left,
+    .footer-right {
+        flex-basis: 100%;
+        font-size: 14px;
+    }
+    .footer-img {
+        top: 25%;
+    }
+}
