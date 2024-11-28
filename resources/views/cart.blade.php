@@ -40,44 +40,43 @@
             </div>
         @endforeach
     </div>
-
-    <div class="user-info">
-        <h3>Shipping Information</h3>
-        <form method="POST" action="{{ route('orders.place') }}">
-            @csrf
-            <span> 
-                <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        </span>
-           
-            <span>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            </span>
-           
-            <span>
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" required>
-            </span>
-
-            <span>
-            <label for="address">Address (Building, street, city):</label>
-            <textarea id="address" name="address" required></textarea>
-            </span>
-           <div class="placeorder_container">
-           @if ($errors->any())
-    <div class="error-messages">
-        @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
-        @endforeach
-    </div>
-@endif
- 
-           <button type="submit">Place Order</button></div>
-        </form>
-    </div>
 </div>
+
+<div class="checkout-button-container">
+    <a href="{{ route('checkout') }}" class="checkout-button">Proceed to Checkout</a>
+</div>
+
+
+
 @endsection
+
+<style>
+    .checkout-button-container {
+        margin-top: 10px; /* Reduce the space above the button */
+        display: flex;
+        justify-content: center; /* Center-align the button */
+    }
+    
+    .checkout-button {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        background-color: #ff4c61;
+        color: white;
+        border-radius: 5px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+    }
+    
+    .checkout-button:hover {
+        background-color: #e04356;
+    }
+    </style>
+    
+    
 
 @push('scripts')
     @vite('resources/js/orders.js')

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -9,42 +8,42 @@ use App\Models\hairoineUser;
 
 class LoginController extends Controller
 {
+    // Show the login form
     public function showLoginForm()
     {
         return view('login'); 
     }
 
+    // Handle login logic
     public function login(Request $request)
     {
-        
+        // Validate the form inputs
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
         ]);
 
-        // Check if the input is an email or a username
+        // Determine if the input is an email or username
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
 
         // Attempt to find the user
         $user = hairoineUser::where($fieldType, $request->username)->first();
 
-        // Verify the user's credentials
+        // Verify the credentials
         if ($user && Hash::check($request->password, $user->password)) {
             // Log the user in
             Auth::login($user);
 
-            
-
+            // Redirect admins to the admin dashboard
             if ($user->name === 'admin') {
-                // Redirect admin to a specific admin page
-                return redirect('/admin-dashboard');
+                return redirect()->route('admin'); // Admin-specific page
             }
 
-            // Redirect all newly created users to the home page
-            return redirect()->route('home');
+            // Redirect non-admin users to the home page
+            return redirect()->route('home'); // Non-admin users
         }
 
-        // If credentials are invalid, return back with an error message
+        // Invalid credentials - send back with error message
         return back()->withErrors([
             'login' => 'Invalid username or password.',
         ]);
@@ -61,7 +60,7 @@ class LoginController extends Controller
         // Regenerate the CSRF token
         $request->session()->regenerateToken();
 
-        // Redirect to login page
+        // Redirect to login page with a success message
         return redirect('/login')->with('success', 'You have been logged out!');
     }
 }

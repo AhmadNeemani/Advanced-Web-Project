@@ -7,6 +7,7 @@ use App\Http\Controllers\SignupController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminController; 
 
 
 
@@ -30,6 +31,8 @@ Route::get('/dashboard', function () {
 Route::get('/admin-dashboard', function () {
     return view('admin-dashboard');
 })->middleware('auth')->name('admin-dashboard');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 // Quiz route
 Route::get('/quiz', function () {
@@ -94,10 +97,12 @@ Route::middleware(['auth'])->group(function () {
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
+// Edit, update, and delete product routes
+Route::get('/edit-product/{id}', [AdminController::class, 'edit'])->name('edit-product');
+Route::put('/edit-product/{id}', [AdminController::class, 'update'])->name('update-product'); // Use PUT for update
+Route::post('/add-product', [AdminController::class, 'store'])->name('add-product');
+Route::post('/delete-product/{id}', [AdminController::class, 'destroy'])->name('delete-product');
 
+Route::get('/products', [AdminController::class, 'index']);
 
-
-
-
-
-
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
