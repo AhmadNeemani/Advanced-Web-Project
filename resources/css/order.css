@@ -120,6 +120,8 @@
     align-items: center;
     width: 100%;
     margin-top: 20px;
+    flex-direction: column;
+    text-align: center;
 }
 
 .popup-overlay {

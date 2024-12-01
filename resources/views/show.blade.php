@@ -5,7 +5,7 @@
 @section('content')
 <div class="product-details-container">
     <div class="product-image"
-        style="background-image: url('{{ $product->image ? asset('storage/' . $product->image) : asset('pics/default.jpg') }}'); background-size: cover; background-position: center;">
+        style="background-image: url('{{ $product->image ? asset('storage/' . $product->image) : asset('pics/default.jpg') }}'); background-size: contain; background-position: center; background-repeat: no-repeat;">
         <div class="heart" data-id="{{ $product->id }}">
             <img id="favorite-icon"
                 src="{{ $product->isFavorite ? asset('pics/heart_filled.png') : asset('pics/heart.png') }}"

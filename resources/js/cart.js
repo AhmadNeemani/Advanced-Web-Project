@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const cartContainer = document.querySelector('.order-list');
-    const formorder = document.getElementById("order-form");
-
+   
     function checkEmptyCart() {
         if (!cartContainer.querySelector('.order-item')) {
             cartContainer.innerHTML = `<p class="empty-cart-message">Your cart is empty!</p>`;
@@ -18,25 +17,25 @@ document.addEventListener('DOMContentLoaded', function () {
             const productId = quantityDisplay.getAttribute('data-id');
             const stock = parseInt(quantityDisplay.getAttribute('data-stock'));
             const currentQuantity = parseInt(quantityDisplay.textContent);
-
+    
             let newQuantity = currentQuantity;
-
+    
             if (this.classList.contains('increase-qty')) {
                 newQuantity = Math.min(currentQuantity + 1, stock, 10); // Increase quantity, limit by stock and 10
             } else if (this.classList.contains('decrease-qty')) {
                 newQuantity = Math.max(currentQuantity - 1, 1); // Decrease quantity, limit by minimum 1
             }
-
+    
             if (newQuantity === currentQuantity) {
                 return; // No change, skip update
             }
-
+    
             // Update display immediately
             quantityDisplay.textContent = newQuantity;
-
+    
             // Update the total price
             updateCartTotal();
-
+    
             // Send update to the server
             fetch('/orders/update-cart', {
                 method: 'POST',
@@ -68,14 +67,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateCartTotal() {
         let total = 0;
-
+    
         // Loop through each order item to calculate the total
         document.querySelectorAll('.order-item').forEach(item => {
             const price = parseFloat(item.querySelector('.price_quant p').textContent.replace('Price: $', ''));
             const quantity = parseInt(item.querySelector('.quantity-display').textContent);
             total += price * quantity;
         });
-
+    
         // Update the total in the DOM
         const totalElement = document.querySelector('.cart-total h3');
         if (totalElement) {
@@ -137,71 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Handle order form submission
-    if (formorder) {
-        formorder.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent the default form submission
 
-            // Create and show the confirmation popup
-            const confirmPopup = document.createElement('div');
-            confirmPopup.innerHTML = `
-                <div class="popup-overlay">
-                    <div class="popup_order">
-                        <p>Are you sure you want to place the order?</p>
-                        <button id="confirm-order">Yes</button>
-                        <button id="cancel-order">No</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(confirmPopup);
-
-            // Handle confirmation
-            document.getElementById('confirm-order').addEventListener('click', function () {
-                // Submit the form via fetch
-                const formData = new FormData(formorder);
-                fetch('/orders/place', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                    },
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Show the success popup
-                        const successPopup = document.createElement('div');
-                        successPopup.innerHTML = `
-                            <div class="popup-overlay">
-                                <div class="popup_order">
-                                    <p>Order Successful!</p>
-                                    <button id="continue-shopping">Continue Shopping</button>
-                                </div>
-                            </div>
-                        `;
-                        document.body.appendChild(successPopup);
-
-                        // Redirect to home on button click
-                        document.getElementById('continue-shopping').addEventListener('click', function () {
-                            window.location.href = '/'; // Go to home page
-                        });
-                    } else {
-                        alert('Failed to place order. Please try again.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error placing order:', error);
-                    alert('Something went wrong. Please try again.');
-                })
-                .finally(() => {
-                    confirmPopup.remove(); // Remove the confirmation popup
-                });
-            });
-
-            // Handle cancellation
-            document.getElementById('cancel-order').addEventListener('click', function () {
-                confirmPopup.remove(); // Remove the confirmation popup
-            });
-        });
-    }
+    
+      
 });

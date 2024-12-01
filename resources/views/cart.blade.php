@@ -79,5 +79,5 @@
     
 
 @push('scripts')
-    @vite('resources/js/orders.js')
+    @vite('resources/js/cart.js')
 @endpush

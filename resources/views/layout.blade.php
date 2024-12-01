@@ -18,6 +18,7 @@
     @vite('resources/css/products.css')
     @vite('resources/css/show.css')
     @vite('resources/css/order.css')
+    @vite('resources/css/admin.css')
 </head>
 <body>
 <header>

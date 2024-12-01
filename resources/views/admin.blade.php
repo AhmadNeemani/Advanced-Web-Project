@@ -7,11 +7,10 @@
     <h1 class="mb-4 text-center">Admin Panel</h1>
     
 
-    <!-- Add Product -->
     <div class="mb-5">
         <h2 class="mb-4 text-center">Add Product</h2>
 
-        <form action="/add-product" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('add-product') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
@@ -71,63 +70,65 @@
 
     <!-- Product List -->
     <div class="mb-5">
-    <h2 class="mb-4">Manage Products</h2>
+        <h2 class="mb-4">Manage Products</h2>
 
-    <!-- Search Product -->
-    <div class="mb-3">
-        <input type="text" id="searchInput" class="form-control" placeholder="Search products by name...">
+        <!-- Search Product -->
+        <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search products by name...">
+        </div>
+
+        <table class="table table-striped" id="productsTable">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="body_product_admin">
+    @foreach($products as $product)
+        <tr>
+            <td>
+                @if($product->image)
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="height: 80px;">
+                @else
+                    <span>No Image</span>
+                @endif
+            </td>
+            <td class="product-name">{{ $product->name }}</td>
+            <td>${{ $product->price }}</td>
+            <td>{{ $product->quantity }}</td>
+            <td>
+                <a href="{{ route('edit-product', $product->id) }}" class="btn" style="background-color: #FFB6C1; border: none; color: white;">Edit</a>
+
+                <form action="{{ route('delete-product', $product->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    <button type="submit" class="btn" style="background-color: #D5006D; border: none; color: white;">Delete</button>
+                </form>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
+
+        </table>
     </div>
 
-    <table class="table table-striped" id="productsTable">
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($products as $product)
-                <tr>
-                    <td>
-                        @if($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" width="100">
-                        @else
-                            <span>No Image</span>
-                        @endif
-                    </td>
-                    <td class="product-name">{{ $product->name }}</td>
-                    <td>${{ $product->price }}</td>
-                    <td>{{ $product->quantity }}</td>
-                    <td>
-                        <a href="{{ route('edit-product', $product->id) }}" class="btn" style="background-color: #FFB6C1; border: none; color: white;">Edit</a>
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#productsTable tbody tr');
 
-                        <form action="{{ route('delete-product', $product->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            <button type="submit" class="btn" style="background-color: #D5006D; border: none; color: white;">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-
-<script>
-    document.getElementById('searchInput').addEventListener('input', function () {
-        const filter = this.value.toLowerCase();
-        const rows = document.querySelectorAll('#productsTable tbody tr');
-
-        rows.forEach(row => {
-            const productName = row.querySelector('.product-name').textContent.toLowerCase();
-            if (productName.includes(filter)) {
-                row.style.display = ''; 
-            } else {
-                row.style.display = 'none'; 
-            }
+            rows.forEach(row => {
+                const productName = row.querySelector('.product-name').textContent.toLowerCase();
+                if (productName.includes(filter)) {
+                    row.style.display = ''; 
+                } else {
+                    row.style.display = 'none'; 
+                }
+            });
         });
-    });
-</script>
+    </script>
 @endsection
+

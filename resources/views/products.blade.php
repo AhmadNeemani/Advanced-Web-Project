@@ -14,7 +14,7 @@
         @if($products->count() > 0)
             @foreach($products as $product)
                 <a href="{{ route('products.show', $product->id) }}" class="product-link">
-                    <div class="mycard" style="background-image: url('{{ asset($product->image ?? 'pics/default.jpg') }}');">
+                <div class="mycard" style="background-image: url('{{ asset('storage/' . ($product->image ?? 'product_images/default.jpg')) }}');">
                         <div class="heart-wrapper">
                             <div class="heart" data-id="{{ $product->id }}">
                                 <img src="{{ $product->isFavorite ? asset('pics/heart_filled.png') : asset('pics/heart.png') }}"

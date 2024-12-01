@@ -42,39 +42,47 @@
         @endforeach
     </div>
 
+    
     <div class="user-info">
         <h3>Shipping Information</h3>
-        <form method="POST" action="{{ route('orders.place') }}">
+        <form method="POST" action="{{ route('orders.place') }}" id="order-form">
             @csrf
             <span> 
                 <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        </span>
-           
-            <span>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+                <input type="text" id="name" name="name" required>
             </span>
            
             <span>
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </span>
+           
+            <span>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" required>
             </span>
 
             <span>
-            <label for="address">Address (Building, street, city):</label>
-            <textarea id="address" name="address" required></textarea>
+                <label for="address">Address (Building, street, city):</label>
+                <textarea id="address" name="address" required></textarea>
             </span>
-           <div class="placeorder_container">
-           @if ($errors->any())
-    <div class="error-messages">
-        @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
-        @endforeach
+           
+            <div class="placeorder_container">
+                @if ($errors->any())
+                    <div class="error-messages">
+                        @foreach ($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+                <div class="cart-total">
+        <h3>Total: ${{ number_format($cartItems->sum(function($item) {
+            return $item->price * $item->cart_quantity;
+        }), 2) }}</h3>
+        <p><strong>Payment Method:</strong> Cash on Delivery</p>
     </div>
-@endif
- 
-           <button type="submit">Place Order</button></div>
+                <button type="submit">Place Order</button>
+            </div>
         </form>
     </div>
 </div>

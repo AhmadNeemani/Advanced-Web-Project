@@ -313,7 +313,7 @@ body.showCart .container {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     background-position: top;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size:contain;
     position: relative;
     cursor: pointer;
     background-color: #fff;
