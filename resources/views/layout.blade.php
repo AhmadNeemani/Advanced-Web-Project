@@ -23,22 +23,16 @@
 <body>
 <header>
     <div id="header">
+    <div id="headermiddle">
+            <img src="{{ asset('pics/lastlogo.png') }}" alt="logo" class="logo">
+        </div>
         <div id="headerfirst">
             <a href="/">Home</a>    
-            <a href="/quiz">Quiz</a>
             <a href="/productsList">Products</a>
-            <a href="#footer">Meet Us</a>
-        </div>
-
-        <div id="headermiddle">
-            <img src="{{ asset('pics/lastlogo.png') }}" alt="logo" class="logo">
+        
         </div>
 
         <div id="headerSecond">
-            <a href="#features">Features</a>
-            <a href="#services">Services</a>
-            <a href="#testimonial">Testimonials</a>
-        
             @if (Auth::check())
                 <!-- Show Hamburger Menu for Authenticated Users -->
                 <div class="dropdown">

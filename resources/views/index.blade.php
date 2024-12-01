@@ -10,7 +10,7 @@
         <p>YOUR HAIR</p>
         <p>YOUR GOALS</p>
         <p>YOUR FORMULA</p>
-        <button id="banner-btn">Customize Your Formula!</button>
+       
 
         <div class="popup" id="popup">
             <div class="popup-inner">
@@ -106,46 +106,5 @@
     </div>
 </section>
 
-<!-- Testimonial Section -->
-<section id="testimonial">
-        <div class="title-text">
-            <p>testimonial</p>
-            <h1>what client says ?</h1>
-        </div>
-        <div class="testimonial-row">
-            <div class="testimonial-column">
-                <div class="user">
-                    <img src="src/selfie1.jpg">
-                    <div class="user-info">
-                        <h4>ken normen <i class="fa fa-twitter"></i></h4>
-                        <small>@kennormen</small>
-                    </div>
-                </div>
-                <p>Prior to using Hairione, my hair was course and brittle due to graying. It had also changed to a wavy frizz. After using Function of Beauty for several months, my hair is soft and manageable. I flat iron it every day and it is still very
-                    healthy. I liked being able to choose what to put into my shampoo.</p>
-            </div>
-            <div class="testimonial-column">
-                <div class="user">
-                    <img src="src/selfie2.jpg">
-                    <div class="user-info">
-                        <h4>kaylie gorge <i class="fa fa-twitter"></i></h4>
-                        <small>@heykaylie</small>
-                    </div>
-                </div>
-                <p>Hair quiz was both fun and easy to do!! The variety of scents, colors and options for hair types is fantastic. Shipping was also quick! The shampoo & conditioner combo has exceeded my expectations and has vastly improved the health of
-                    my hair!! If you decide to buy these products, remember to give some time!</p>
-            </div>
-            <div class="testimonial-column">
-                <div class="user">
-                    <img src="src/selfie3.jpg">
-                    <div class="user-info">
-                        <h4>eddie munson<i class="fa fa-twitter"></i></h4>
-                        <small>@eddiem</small>
-                    </div>
-                </div>
-                <p>I use Hairione products for years and have never been disappointed by an order. This time I received my products with sugared and spice(d) fragrance and I swear it‘s the best! I use shampoo, conditioner, hair oil and nie also the leave-in
-                    conditioner and my hair has never looked and felt better!</p>
-            </div>
-        </div>
-    </section>
+
 @endsection
