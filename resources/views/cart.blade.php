@@ -43,7 +43,7 @@
 </div>
 
 <div class="checkout-button-container">
-    <a href="{{ route('checkout') }}" class="checkout-button">Proceed to Checkout</a>
+    <a href="{{ route('orders.index') }}" class="checkout-button">Proceed to Checkout</a>
 </div>
 
 

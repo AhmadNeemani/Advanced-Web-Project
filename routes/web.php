@@ -22,17 +22,8 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Dashboard route (protected by auth middleware)
-Route::get('/dashboard', function () {
-    return 'Welcome to your dashboard!';
-})->middleware('auth')->name('dashboard');
 
-// Admin dashboard (protected by auth middleware)
-Route::get('/admin-dashboard', function () {
-    return view('admin-dashboard');
-})->middleware('auth')->name('admin-dashboard');
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 // Quiz route
 Route::get('/quiz', function () {
@@ -102,7 +93,21 @@ Route::get('/edit-product/{id}', [AdminController::class, 'edit'])->name('edit-p
 Route::put('/edit-product/{id}', [AdminController::class, 'update'])->name('update-product'); // Use PUT for update
 Route::post('/add-product', [AdminController::class, 'store'])->name('add-product');
 Route::post('/delete-product/{id}', [AdminController::class, 'destroy'])->name('delete-product');
-
 Route::get('/products', [AdminController::class, 'index']);
 
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+Route::get('/dashboard', function () {
+    return 'Welcome to your dashboard!';
+})->middleware('auth')->name('dashboard');
+
+// Admin dashboard (protected by auth middleware)
+Route::get('/admin-dashboard', function () {
+    return view('admin-dashboard');
+})->middleware('auth')->name('admin-dashboard');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+
+
+
+
